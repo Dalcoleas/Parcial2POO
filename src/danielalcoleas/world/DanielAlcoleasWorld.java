@@ -5,6 +5,9 @@
  */
 package danielalcoleas.world;
 
+import danielalcoleas.world.razas.FabricaRazas;
+import danielalcoleas.world.razas.Raza;
+
 /**
  *
  * @author daniel
@@ -15,7 +18,16 @@ public class DanielAlcoleasWorld {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        /*AbstractFactory factory;
+        factory = FactoryProducer.getFactory("raza");
+        Raza ingles = factory.getRaza("ingleses");
+        
+        ingles.raza();*/
+       
+        Menu menu = Menu.getInstance();
+        
+        menu.menu();
     }
     
 }
