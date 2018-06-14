@@ -9,10 +9,17 @@ package danielalcoleas.world.vehiculos;
  *
  * @author daniel
  */
-public class Challenger implements Vehiculo{
+public class Challenger extends Vehiculos{
+
+
   @Override
     public void atacar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+  @Override
+    public void fabricar(){
+        System.out.println("Challenger Fabricado");
     }
     
     

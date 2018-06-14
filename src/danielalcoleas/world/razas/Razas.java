@@ -10,11 +10,8 @@ package danielalcoleas.world.razas;
  * @author daniel
  */
 public class Razas implements Raza{
+    
     public String nombre;
-
-    public Razas(String nombre) {
-        this.nombre = nombre;
-    }
     
     public Razas(){
         
@@ -27,9 +24,7 @@ public class Razas implements Raza{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
-    
+
     @Override
     public void raza() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

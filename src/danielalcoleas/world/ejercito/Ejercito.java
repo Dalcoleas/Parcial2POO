@@ -10,6 +10,20 @@ package danielalcoleas.world.ejercito;
  * @author daniel
  */
 public interface Ejercito {
+    String getNombre();
     void atacarEdificio();
     void atacarTropas();
+    void entrenarArmada();
+    void entrenarSoldado();
+    int getCostoDia();
+    int getCostoOro();
+    int getCostoPla();
+    int getVida();
+    void setVida(int vida);
+    int getNumFase();
+    void setNumFase(int numFase);
+    int getDaño();
+    void setDaño(int daño);
+    int getTiempoEspera();
+    void setHab(boolean hab);
 }

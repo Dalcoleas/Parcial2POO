@@ -5,9 +5,6 @@
  */
 package danielalcoleas.world;
 
-import danielalcoleas.world.razas.FabricaRazas;
-import danielalcoleas.world.razas.Raza;
-
 /**
  *
  * @author daniel
@@ -19,15 +16,13 @@ public class DanielAlcoleasWorld {
      */
     public static void main(String[] args) {
         
-        /*AbstractFactory factory;
-        factory = FactoryProducer.getFactory("raza");
-        Raza ingles = factory.getRaza("ingleses");
-        
-        ingles.raza();*/
-       
+
         Menu menu = Menu.getInstance();
-        
+       
+
         menu.menu();
+
+
     }
     
 }

@@ -9,11 +9,14 @@ package danielalcoleas.world.razas;
  *
  * @author daniel
  */
-public class Israelitas implements Raza{
+public class Israelitas extends Razas{
 
     @Override
     public void raza() {
-        System.out.println("Me aman");
+        System.out.println("Raza Creada con Éxito");
     }
     
+        public Israelitas(){
+        this.nombre = "Israelitas";
+    }
 }

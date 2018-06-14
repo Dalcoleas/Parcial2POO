@@ -9,11 +9,15 @@ package danielalcoleas.world.razas;
  *
  * @author daniel
  */
-public class Estadounidenses implements Raza {
+public class Estadounidenses extends Razas{
 
     @Override
     public void raza() {
-        System.out.println("Soy otra raza");
+        System.out.println("Raza Creada con Éxito");
+    }
+    
+        public Estadounidenses(){
+        this.nombre = "Estadounidenses";
     }
     
 }

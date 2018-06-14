@@ -7,7 +7,7 @@ package danielalcoleas.world;
 
 import danielalcoleas.world.edificacion.Edificacion;
 import danielalcoleas.world.ejercito.Ejercito;
-import danielalcoleas.world.razas.Raza;
+import danielalcoleas.world.razas.*;
 import danielalcoleas.world.vehiculos.Vehiculo;
 
 

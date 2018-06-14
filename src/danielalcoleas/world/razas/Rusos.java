@@ -9,11 +9,15 @@ package danielalcoleas.world.razas;
  *
  * @author daniel
  */
-public class Rusos implements Raza{
+public class Rusos extends Razas{
 
     @Override
     public void raza() {
-        System.out.println("Que viva Putin");
+        System.out.println("Raza Creada con Éxito");
+    }
+    
+        public Rusos(){
+        this.nombre = "Rusos";
     }
     
 }

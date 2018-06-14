@@ -10,6 +10,32 @@ package danielalcoleas.world.ejercito;
  * @author daniel
  */
 public class ArmadaCoreana implements Ejercito{
+    
+    private int vida, tiempoEspera, numFase, daño, costoDia, costoOro, costoPla;
+    private String nombre;
+    private boolean hab;
+
+    public ArmadaCoreana() {
+        this.vida = 1000;
+        this.tiempoEspera = 1;
+        this.numFase = 0;
+        this.daño = 100;
+        this.costoDia = 200;
+        this.costoOro = 150;
+        this.costoPla = 100;
+        this.nombre = "Armada Coreana";
+        this.hab = false;
+    }
+
+    @Override
+    public int getDaño() {
+        return daño;
+    }
+
+    @Override
+    public void setDaño(int daño) {
+        this.daño = daño;
+    }
 
     @Override
     public void atacarEdificio() {
@@ -20,5 +46,66 @@ public class ArmadaCoreana implements Ejercito{
     public void atacarTropas() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    @Override
+    public void entrenarArmada() {
+        System.out.println("Entrenando.....");    
+    }
+
+    @Override
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
+    public void entrenarSoldado() {
+        System.out.println("Entranando....");    
+    }
+
+    @Override
+    public int getCostoDia() {
+        return costoDia;   
+    }
+
+    @Override
+    public int getCostoOro() {
+        return costoOro;    
+    }
+
+    @Override
+    public int getCostoPla() {
+        return costoPla;    }
+
+    @Override
+    public int getNumFase() {
+        return numFase;    
+    }
+
+    @Override
+    public int getTiempoEspera() {
+        return tiempoEspera;   
+    }
+
+    @Override
+    public void setHab(boolean hab) {
+        this.hab = hab;    
+    }
+
+    @Override
+    public int getVida() {
+        return vida;    
+    }
+
+    @Override
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
+    @Override
+    public void setNumFase(int numFase) {
+        this.numFase = numFase;    
+    }
+
+
     
 }

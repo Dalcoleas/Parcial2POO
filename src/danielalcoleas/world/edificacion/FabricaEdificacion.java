@@ -34,6 +34,8 @@ public class FabricaEdificacion implements AbstractFactory{
             return new Taller2();
         case "taller3":
             return new Taller3();
+        case "centroDeMando":
+            return new CentroMando();
         }
         return null;
     }

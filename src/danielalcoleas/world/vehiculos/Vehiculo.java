@@ -11,4 +11,6 @@ package danielalcoleas.world.vehiculos;
  */
 public interface Vehiculo {
     void atacar();
+    void fabricar();
+    
 }

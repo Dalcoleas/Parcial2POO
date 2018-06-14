@@ -10,20 +10,16 @@ package danielalcoleas.world.razas;
  * @author daniel
  */
 public class Coreanos extends Razas{
-     this.nombre = "Coreano";
+
 
     public Coreanos(){
-        
+        this.nombre = "Coreanos";
     }
-
-    public String getNombre() {
-        return nombre;
-    }
-
+    
 
     @Override
     public void raza() {
-        System.out.println("Soy una raza");
+        System.out.println("Raza Creada con Éxito");
     }
     
 }
