@@ -12,5 +12,21 @@ package danielalcoleas.world.vehiculos;
 public interface Vehiculo {
     void atacar();
     void fabricar();
+    String getNombre();
+    void atacarEdificio();
+    void atacarTropas();
+    void entrenarArmada();
+    void entrenarSoldado();
+    int getCostoDia();
+    int getCostoOro();
+    int getCostoPla();
+    int getVida();
+    void setVida(int vida);
+    int getNumFase();
+    void setNumFase(int numFase);
+    int getDanio();
+    void setDanio(int danio);
+    int getTiempoEspera();
+    void setHab(boolean hab);
     
 }

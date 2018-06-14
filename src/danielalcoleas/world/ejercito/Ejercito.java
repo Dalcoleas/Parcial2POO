@@ -22,8 +22,8 @@ public interface Ejercito {
     void setVida(int vida);
     int getNumFase();
     void setNumFase(int numFase);
-    int getDaño();
-    void setDaño(int daño);
+    int getDanio();
+    void setDanio(int danio);
     int getTiempoEspera();
     void setHab(boolean hab);
 }

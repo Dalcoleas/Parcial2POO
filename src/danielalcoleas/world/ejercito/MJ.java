@@ -11,7 +11,7 @@ package danielalcoleas.world.ejercito;
  */
 public class MJ implements Ejercito{
 
-    private int vida, tiempoEspera, numFase, daño, costoDia, costoOro, costoPla;
+    private int vida, tiempoEspera, numFase, danio, costoDia, costoOro, costoPla;
     private String nombre;
     private boolean hab;
 
@@ -19,7 +19,7 @@ public class MJ implements Ejercito{
         this.vida = 1500;
         this.tiempoEspera = 2;
         this.numFase = 0;
-        this.daño = 100;
+        this.danio = 100;
         this.costoDia = 200;
         this.costoOro = 150;
         this.costoPla = 100;
@@ -28,13 +28,13 @@ public class MJ implements Ejercito{
     }
 
     @Override
-    public int getDaño() {
-        return daño;
+    public int getDanio() {
+        return danio;
     }
 
     @Override
-    public void setDaño(int daño) {
-        this.daño = daño;
+    public void setDanio(int danio) {
+        this.danio = danio;
     }
 
     @Override

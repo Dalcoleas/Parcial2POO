@@ -34,6 +34,19 @@ public class Jugador {
     private Recolector3 rec3;
     private Recolector2 rec2;
     private Recolector1 rec1;
+    private ArmadaCoreana am;
+    private ArmadaEstadounidense ae;
+    private ArmadaInglesa aing;
+    private ArmadaIsraeli aisr;
+    private ArmadaRusa ar;
+    private Churchill ch;
+    private KimJong km;
+    private MJ mj;
+    private PutinDestroyer pd;
+    private WonderGal wg;
+    private Challenger cha;
+    private Humvee hv;
+    private Stryker st;
     private int fase;
     private double diamante, oro, plata;
     private ArrayList <Vehiculo> vehiculos;
@@ -45,7 +58,18 @@ public class Jugador {
         this.vehiculos = new ArrayList<>();
         this.ejercitos = new ArrayList<>();
         this.edificaciones = new ArrayList<>();
-        
+        this.ae = new ArmadaEstadounidense();
+        this.aing = new ArmadaInglesa();
+        this.aisr = new ArmadaIsraeli();
+        this.ar = new ArmadaRusa();
+        this.km = new KimJong();
+        this.mj = new MJ();
+        this.ch = new Churchill();
+        this.pd = new PutinDestroyer();
+        this.wg = new WonderGal();
+        this.hv = new Humvee();
+        this.cha = new Challenger();
+        this.st = new Stryker();
         this.fase = 0;
         this.diamante = 2000;
         this.oro = 2000;
@@ -57,6 +81,7 @@ public class Jugador {
         this.rec2 = new Recolector2();
         this.rec1 = new Recolector1();
         this.cuartel = new Cuartel();
+        this.am = new ArmadaCoreana();
         this.centroDeMando = new CentroMando();
         centroDeMando.setDiamante(this.diamante);
         centroDeMando.setOro(this.oro);
@@ -430,22 +455,19 @@ public class Jugador {
                     switch(opc5){
                         case 1:
                             
-                            //VERIFICAR QUE HAYA RECURSOS Y QUE YA HAYA UN CUARTEL CONSTRUIDO
                             if("Coreanos".equals(getRaza().getNombre())){
                                 for(Edificacion edi : this.edificaciones){
                                     if("Cuartel".equals(edi.getNombre())){
                                         if(this.diamante >= ejer.getEjercito("armadaCoreana").getCostoDia() && this.oro >= ejer.getEjercito("armadaCoreana").getCostoOro() && this.plata >= ejer.getEjercito("armadaCoreana").getCostoPla()){
-                                            System.out.println(this.fase);
-                                            ejer.getEjercito("armadaCoreana").setNumFase(2);
-                                            System.out.println("pupu: " + ejer.getEjercito("armadaCoreana").getNumFase());
-                                            ejercitos.add((Ejercito) ejer.getEjercito("armadaCoreana"));
+                                            am.setNumFase(this.fase);;
+                                            ejercitos.add(am);
                                             this.diamante = this.diamante - ejer.getEjercito("armadaCoreana").getCostoDia();
-                                            this.oro = this.oro - tall2.getCostoOro() -  ejer.getEjercito("armadaCoreana").getCostoOro();
-                                            this.plata = this.plata - tall2.getCostoPla() - ejer.getEjercito("armadaCoreana").getCostoPla();
+                                            this.oro = this.oro -  ejer.getEjercito("armadaCoreana").getCostoOro();
+                                            this.plata = this.plata -  ejer.getEjercito("armadaCoreana").getCostoPla();
                                             centroDeMando.setPlata(this.plata);
                                             centroDeMando.setDiamante(this.diamante);
                                             centroDeMando.setOro(this.oro);
-                                            ejer.getEjercito("armadaCoreana").entrenarArmada();
+                                            am.entrenarArmada();
                                             
                                         }  else{
                                             System.out.println("Recursos Insuficientes");
@@ -459,17 +481,15 @@ public class Jugador {
                                 for(Edificacion edi : this.edificaciones){
                                     if("Cuartel".equals(edi.getNombre())){
                                         if(this.diamante >= ejer.getEjercito("armadaEstadounidense").getCostoDia() && this.oro >= ejer.getEjercito("armadaEstadounidense").getCostoOro() && this.plata >= ejer.getEjercito("armadaEstadounidense").getCostoPla()){
-                                            System.out.println(this.fase);
-                                            ejer.getEjercito("armadaEstadounidense").setNumFase(this.fase);
-                                            System.out.println("pupu: " + ejer.getEjercito("armadaEstadounidense").getNumFase());
-                                            ejercitos.add((Ejercito) ejer.getEjercito("armadaEstadounidense"));
+                                            ae.setNumFase(this.fase);
+                                            ejercitos.add(ae);
                                             this.diamante = this.diamante - ejer.getEjercito("armadaEstadounidense").getCostoDia();
-                                            this.oro = this.oro - tall2.getCostoOro() -  ejer.getEjercito("armadaEstadounidense").getCostoOro();
-                                            this.plata = this.plata - tall2.getCostoPla() - ejer.getEjercito("armadaEstadounidense").getCostoPla();
+                                            this.oro = this.oro -  ejer.getEjercito("armadaEstadounidense").getCostoOro();
+                                            this.plata = this.plata - ejer.getEjercito("armadaEstadounidense").getCostoPla();
                                             centroDeMando.setPlata(this.plata);
                                             centroDeMando.setDiamante(this.diamante);
                                             centroDeMando.setOro(this.oro);
-                                            ejer.getEjercito("armadaEstadounidense").entrenarArmada();
+                                            ae.entrenarArmada();
                                             
                                         }  else{
                                             System.out.println("Recursos Insuficientes");
@@ -482,17 +502,15 @@ public class Jugador {
                                 for(Edificacion edi : this.edificaciones){
                                     if("Cuartel".equals(edi.getNombre())){
                                         if(this.diamante >= ejer.getEjercito("armadaInglesa").getCostoDia() && this.oro >= ejer.getEjercito("armadaInglesa").getCostoOro() && this.plata >= ejer.getEjercito("armadaInglesa").getCostoPla()){
-                                            System.out.println(this.fase);
-                                            ejer.getEjercito("armadaInglesa").setNumFase(this.fase);
-                                            System.out.println("pupu: " + ejer.getEjercito("armadaInglesa").getNumFase());
-                                            ejercitos.add((Ejercito) ejer.getEjercito("armadaInglesa"));
+                                            aing.setNumFase(this.fase);
+                                            ejercitos.add(aing);
                                             this.diamante = this.diamante - ejer.getEjercito("armadaInglesa").getCostoDia();
-                                            this.oro = this.oro - tall2.getCostoOro() -  ejer.getEjercito("armadaInglesa").getCostoOro();
-                                            this.plata = this.plata - tall2.getCostoPla() - ejer.getEjercito("armadaInglesa").getCostoPla();
+                                            this.oro = this.oro -   ejer.getEjercito("armadaInglesa").getCostoOro();
+                                            this.plata = this.plata -  ejer.getEjercito("armadaInglesa").getCostoPla();
                                             centroDeMando.setPlata(this.plata);
                                             centroDeMando.setDiamante(this.diamante);
                                             centroDeMando.setOro(this.oro);
-                                            ejer.getEjercito("armadaInglesa").entrenarArmada();
+                                            aing.entrenarArmada();
                                             
                                         }  else{
                                             System.out.println("Recursos Insuficientes");
@@ -505,17 +523,15 @@ public class Jugador {
                                 for(Edificacion edi : this.edificaciones){
                                     if("Cuartel".equals(edi.getNombre())){
                                         if(this.diamante >= ejer.getEjercito("armadaIsraeli").getCostoDia() && this.oro >= ejer.getEjercito("armadaIsraeli").getCostoOro() && this.plata >= ejer.getEjercito("armadaIsraeli").getCostoPla()){
-                                            System.out.println(this.fase);
-                                            ejer.getEjercito("armadaIsraeli").setNumFase(this.fase);
-                                            System.out.println("pupu: " + ejer.getEjercito("armadaIsraeli").getNumFase());
-                                            ejercitos.add((Ejercito) ejer.getEjercito("armadaIsraeli"));
+                                            aisr.setNumFase(this.fase);
+                                            ejercitos.add(aisr);
                                             this.diamante = this.diamante - ejer.getEjercito("armadaIsraeli").getCostoDia();
-                                            this.oro = this.oro - tall2.getCostoOro() -  ejer.getEjercito("armadaIsraeli").getCostoOro();
-                                            this.plata = this.plata - tall2.getCostoPla() - ejer.getEjercito("armadaIsraeli").getCostoPla();
+                                            this.oro = this.oro - ejer.getEjercito("armadaIsraeli").getCostoOro();
+                                            this.plata = this.plata -  ejer.getEjercito("armadaIsraeli").getCostoPla();
                                             centroDeMando.setPlata(this.plata);
                                             centroDeMando.setDiamante(this.diamante);
                                             centroDeMando.setOro(this.oro);
-                                            ejer.getEjercito("armadaIsraeli").entrenarArmada();
+                                            aisr.entrenarArmada();
                                             
                                         }  else{
                                             System.out.println("Recursos Insuficientes");
@@ -528,17 +544,15 @@ public class Jugador {
                                 for(Edificacion edi : this.edificaciones){
                                     if("Cuartel".equals(edi.getNombre())){
                                         if(this.diamante >= ejer.getEjercito("armadaRusa").getCostoDia() && this.oro >= ejer.getEjercito("armadaRusa").getCostoOro() && this.plata >= ejer.getEjercito("armadaRusa").getCostoPla()){
-                                            System.out.println(this.fase);
-                                            ejer.getEjercito("armadaRusa").setNumFase(this.fase);
-                                            System.out.println("pupu: " + ejer.getEjercito("armadaRusa").getNumFase());
-                                            ejercitos.add((Ejercito) ejer.getEjercito("armadaRusa"));
+                                            ar.setNumFase(this.fase);
+                                            ejercitos.add(ar);
                                             this.diamante = this.diamante - ejer.getEjercito("armadaRusa").getCostoDia();
-                                            this.oro = this.oro - tall2.getCostoOro() -  ejer.getEjercito("armadaRusa").getCostoOro();
-                                            this.plata = this.plata - tall2.getCostoPla() - ejer.getEjercito("armadaRusa").getCostoPla();
+                                            this.oro = this.oro - ejer.getEjercito("armadaRusa").getCostoOro();
+                                            this.plata = this.plata - ejer.getEjercito("armadaRusa").getCostoPla();
                                             centroDeMando.setPlata(this.plata);
                                             centroDeMando.setDiamante(this.diamante);
                                             centroDeMando.setOro(this.oro);
-                                            ejer.getEjercito("armadaRusa").entrenarArmada();
+                                            ar.entrenarArmada();
                                             
                                         }  else{
                                             System.out.println("Recursos Insuficientes");
@@ -548,42 +562,125 @@ public class Jugador {
                                 }
                             }     
                             break;
-                        case 2:
                             
+                        case 2:
                             if("Coreanos".equals(getRaza().getNombre())){
-                                ejercitos.add((Ejercito) ejer.getEjercito("kimJong"));
-                                ejer.getEjercito("kimJong").entrenarArmada();
+                                for(Edificacion edi : this.edificaciones){
+                                    if("Cuartel".equals(edi.getNombre())){
+                                        if(this.diamante >= ejer.getEjercito("kimJong").getCostoDia() && this.oro >= ejer.getEjercito("kimJong").getCostoOro() && this.plata >= ejer.getEjercito("kimJong").getCostoPla()){
+                                            km.setNumFase(this.fase);
+                                            ejercitos.add(km);
+                                            this.diamante = this.diamante - ejer.getEjercito("kimJong").getCostoDia();
+                                            this.oro = this.oro -  ejer.getEjercito("kimJong").getCostoOro();
+                                            this.plata = this.plata - ejer.getEjercito("kimJong").getCostoPla();
+                                            centroDeMando.setPlata(this.plata);
+                                            centroDeMando.setDiamante(this.diamante);
+                                            centroDeMando.setOro(this.oro);
+                                            km.entrenarSoldado();
+                                            
+                                        }  else{
+                                            System.out.println("Recursos Insuficientes");
+                                        }  
+                                    } else 
+                                        System.out.println(".");
+                                }
                             }
 
                             if("Estadounidenses".equals(getRaza().getNombre())){
-                                ejercitos.add((Ejercito) ejer.getEjercito("mj"));
-                                ejer.getEjercito("mj").entrenarArmada();
+                                for(Edificacion edi : this.edificaciones){
+                                    if("Cuartel".equals(edi.getNombre())){
+                                        if(this.diamante >= ejer.getEjercito("mj").getCostoDia() && this.oro >= ejer.getEjercito("mj").getCostoOro() && this.plata >= ejer.getEjercito("mj").getCostoPla()){
+                                            mj.setNumFase(this.fase);
+                                            ejercitos.add(mj);
+                                            this.diamante = this.diamante - ejer.getEjercito("mj").getCostoDia();
+                                            this.oro = this.oro - ejer.getEjercito("mj").getCostoOro();
+                                            this.plata = this.plata -ejer.getEjercito("mj").getCostoPla();
+                                            centroDeMando.setPlata(this.plata);
+                                            centroDeMando.setDiamante(this.diamante);
+                                            centroDeMando.setOro(this.oro);
+                                            mj.entrenarSoldado();
+                                            
+                                        }  else{
+                                            System.out.println("Recursos Insuficientes");
+                                        }  
+                                    } else 
+                                        System.out.println(".");
+                                }
                             }
-                            
                             if("Ingleses".equals(getRaza().getNombre())){
-                                ejercitos.add((Ejercito) ejer.getEjercito("churchill"));
-                                ejer.getEjercito("churchill").entrenarArmada();
+                                for(Edificacion edi : this.edificaciones){
+                                    if("Cuartel".equals(edi.getNombre())){
+                                        if(this.diamante >= ejer.getEjercito("churchill").getCostoDia() && this.oro >= ejer.getEjercito("churchill").getCostoOro() && this.plata >= ejer.getEjercito("churchill").getCostoPla()){
+                                            ch.setNumFase(this.fase);
+                                            ejercitos.add(ch);
+                                            this.diamante = this.diamante - ejer.getEjercito("churchill").getCostoDia();
+                                            this.oro = this.oro - ejer.getEjercito("churchill").getCostoOro();
+                                            this.plata = this.plata - ejer.getEjercito("churchill").getCostoPla();
+                                            centroDeMando.setPlata(this.plata);
+                                            centroDeMando.setDiamante(this.diamante);
+                                            centroDeMando.setOro(this.oro);
+                                            ch.entrenarSoldado();
+                                            
+                                        }  else{
+                                            System.out.println("Recursos Insuficientes");
+                                        }  
+                                    } else 
+                                        System.out.println(".");
+                                }
                             }
                             if("Israelitas".equals(getRaza().getNombre())){
-                                ejercitos.add((Ejercito) ejer.getEjercito("wonderGal"));
-                                ejer.getEjercito("wonderGal").entrenarArmada();
+                                for(Edificacion edi : this.edificaciones){
+                                    if("Cuartel".equals(edi.getNombre())){
+                                        if(this.diamante >= ejer.getEjercito("wonderGal").getCostoDia() && this.oro >= ejer.getEjercito("wonderGal").getCostoOro() && this.plata >= ejer.getEjercito("wonderGal").getCostoPla()){
+                                            wg.setNumFase(this.fase);
+                                            ejercitos.add(wg);
+                                            this.diamante = this.diamante - ejer.getEjercito("wonderGal").getCostoDia();
+                                            this.oro = this.oro -  ejer.getEjercito("wonderGal").getCostoOro();
+                                            this.plata = this.plata - ejer.getEjercito("wonderGal").getCostoPla();
+                                            centroDeMando.setPlata(this.plata);
+                                            centroDeMando.setDiamante(this.diamante);
+                                            centroDeMando.setOro(this.oro);
+                                            wg.entrenarSoldado();
+                                            
+                                        }  else{
+                                            System.out.println("Recursos Insuficientes");
+                                        }  
+                                    } else 
+                                        System.out.println(".");
+                                }
                             }
-                            
                             if("Rusos".equals(getRaza().getNombre())){
-                                ejercitos.add((Ejercito) ejer.getEjercito("putinDestroyer"));
-                                ejer.getEjercito("putinDestroyer").entrenarArmada();
-                            }       
+                                for(Edificacion edi : this.edificaciones){
+                                    if("Cuartel".equals(edi.getNombre())){
+                                        if(this.diamante >= ejer.getEjercito("putinDestroyer").getCostoDia() && this.oro >= ejer.getEjercito("putinDestroyer").getCostoOro() && this.plata >= ejer.getEjercito("putinDestroyer").getCostoPla()){
+                                            pd.setNumFase(this.fase);
+                                            ejercitos.add(pd);
+                                            this.diamante = this.diamante - ejer.getEjercito("putinDestroyer").getCostoDia();
+                                            this.oro = this.oro - ejer.getEjercito("putinDestroyer").getCostoOro();
+                                            this.plata = this.plata -  ejer.getEjercito("putinDestroyer").getCostoPla();
+                                            centroDeMando.setPlata(this.plata);
+                                            centroDeMando.setDiamante(this.diamante);
+                                            centroDeMando.setOro(this.oro);
+                                            pd.entrenarSoldado();
+                                            
+                                        }  else{
+                                            System.out.println("Recursos Insuficientes");
+                                        }  
+                                    } else 
+                                        System.out.println(".");
+                                }
+                            }     
                             break;
                         case 3:
-                            //ATACAR ENEMIGOS
+                            Atacar();
                             break;
                         case 4:
-                            //ATACAR TROPAS ENEMIGAS
+                            
                             break;
                         case 5:
-                            Iterator<Ejercito> nombreIterator = ejercitos.iterator();
-                                while(nombreIterator.hasNext()){
-                                    Ejercito elemento = nombreIterator.next();
+                            Iterator<Ejercito> nI = ejercitos.iterator();
+                                while(nI.hasNext()){
+                                    Ejercito elemento = nI.next();
                                     System.out.println(elemento.getNombre()+" / ");
                             }
                             break;
@@ -610,16 +707,64 @@ public class Jugador {
                             
                             switch(opc7){
                                 case 1:
-                                    vehiculos.add((Vehiculo) veh.getVehiculo("humvee"));
-                                    veh.getVehiculo("humvee").fabricar();
-                                    break;
+                                    for(Edificacion edi : this.edificaciones){
+                                        if("Taller Humvee".equals(edi.getNombre())){
+                                            if(this.diamante >= hv.getCostoDia() && this.oro >= hv.getCostoOro() && this.plata >= hv.getCostoPla()){
+                                                hv.setNumFase(this.fase);
+                                                vehiculos.add(hv);
+                                                this.diamante = this.diamante - hv.getCostoDia();
+                                                this.oro = this.oro -  hv.getCostoOro();
+                                                this.plata = this.plata - hv.getCostoPla();
+                                                centroDeMando.setPlata(this.plata);
+                                                centroDeMando.setDiamante(this.diamante);
+                                                centroDeMando.setOro(this.oro);
+                                                hv.fabricar();
+                                            }  else{
+                                                System.out.println("Recursos Insuficientes");
+                                            }  
+                                        } else 
+                                            System.out.println(".");
+                                    }
+                                        break;
                                 case 2:
-                                    vehiculos.add((Vehiculo) veh.getVehiculo("stryker"));
-                                    veh.getVehiculo("stryker").fabricar();
+                                    for(Edificacion edi : this.edificaciones){
+                                        if("Taller Stryker".equals(edi.getNombre())){
+                                            if(this.diamante >= st.getCostoDia() && this.oro >= st.getCostoOro() && this.plata >= st.getCostoPla()){
+                                                st.setNumFase(this.fase);
+                                                vehiculos.add(st);
+                                                this.diamante = this.diamante - st.getCostoDia();
+                                                this.oro = this.oro -  st.getCostoOro();
+                                                this.plata = this.plata - st.getCostoPla();
+                                                centroDeMando.setPlata(this.plata);
+                                                centroDeMando.setDiamante(this.diamante);
+                                                centroDeMando.setOro(this.oro);
+                                                st.fabricar();
+                                            }  else{
+                                                System.out.println("Recursos Insuficientes");
+                                            }  
+                                        } else 
+                                            System.out.println(".");
+                                    }
                                     break;
                                 case 3:
-                                    vehiculos.add((Vehiculo) veh.getVehiculo("challenger"));
-                                    veh.getVehiculo("challenger").fabricar();
+                                    for(Edificacion edi : this.edificaciones){
+                                        if("Taller Challenger".equals(edi.getNombre())){
+                                            if(this.diamante >= cha.getCostoDia() && this.oro >= cha.getCostoOro() && this.plata >= cha.getCostoPla()){
+                                                cha.setNumFase(this.fase);
+                                                vehiculos.add(cha);
+                                                this.diamante = this.diamante - cha.getCostoDia();
+                                                this.oro = this.oro -  cha.getCostoOro();
+                                                this.plata = this.plata - cha.getCostoPla();
+                                                centroDeMando.setPlata(this.plata);
+                                                centroDeMando.setDiamante(this.diamante);
+                                                centroDeMando.setOro(this.oro);
+                                                cha.fabricar();
+                                            }  else{
+                                                System.out.println("Recursos Insuficientes");
+                                            }  
+                                        } else 
+                                            System.out.println(".");
+                                    }
                                     break;
                             }
                             break;
@@ -630,13 +775,13 @@ public class Jugador {
                             veh.getVehiculo("challenger").atacar();
                             break;
                         case 3:
-                            //Fab...defender();
+                            System.out.println("Defendiendo");
                             break;
                         case 4:
                             Iterator<Vehiculo> nombreIterator = vehiculos.iterator();
                                 while(nombreIterator.hasNext()){
                                     Vehiculo elemento = nombreIterator.next();
-                                    System.out.println(elemento+" / ");
+                                    System.out.println(elemento.getNombre() +" / ");
                             }
                             break;
 
@@ -699,8 +844,9 @@ public class Jugador {
         System.out.print("Opcion: ");
     }
     
-      public void moverFase(){
+    public void moverFase(){
         this.fase += 1;
+        
     }
       
     public void chequearFase(){
@@ -718,12 +864,22 @@ public class Jugador {
             }
         }
         
-        /*for (MachineManager vehiculo : this.vehiculosPreparados){
-            if((vehiculo.getCreationFase()+vehiculo.getWaitTime()) == this.faseActual){
-                vehiculo.setIsEnable(true);
-                System.out.println(vehiculo.getNombre() + "esta listo para atacar");
+        for (Vehiculo vehiculos : this.vehiculos){
+            if((vehiculos.getNumFase()+vehiculos.getTiempoEspera()) == this.fase){
+                vehiculos.setHab(true);
+                System.out.println(vehiculos.getNombre() + " fabricado y listo para atacar");
             }
-        }*/
+        }
+    }
+    
+    public void Atacar(){
+        System.out.println("Tropas Disponibles para atacar: ");
+        Iterator<Ejercito> nombreIterator = ejercitos.iterator();
+        while(nombreIterator.hasNext()){
+        Ejercito elemento = nombreIterator.next();
+            System.out.println(elemento.getNombre()+" / ");
+        }
+                           
     }
 }
 

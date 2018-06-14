@@ -121,6 +121,8 @@ public class Menu {
             
             j1.moverFase();
             j2.moverFase();
+            
+            
 
         }
         
